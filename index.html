@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0B3D91" />
+    <title>Agri-Advisory Platform</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <header class="topbar" role="banner">
+        <nav class="nav" aria-label="Primary" role="tablist">
+            <ul class="nav-list">
+                <li><button class="nav-btn is-active" role="tab" aria-selected="true" data-target="#crop-health" aria-controls="crop-health" aria-label="Show Crop Health">Crop Health</button></li>
+                <li><button class="nav-btn" role="tab" aria-selected="false" data-target="#future-plan" aria-controls="future-plan" aria-label="Show Future Plan">Future Plan</button></li>
+                <li><button class="nav-btn" role="tab" aria-selected="false" data-target="#notifications" aria-controls="notifications" aria-label="Show Notification Center">Notification Center</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main" class="container" tabindex="-1">
+        <!-- Crop Health Section -->
+        <section id="crop-health" class="card" aria-labelledby="crop-health-title" role="tabpanel">
+            <h1 id="crop-health-title" class="section-title">Crop Health</h1>
+            <div class="upload-row">
+                <input id="leafImage" type="file" accept="image/*" style="display:none" />
+                <button id="uploadBtn" class="action-btn" aria-label="Upload image">Upload</button>
+            </div>
+
+            <div id="cropResults" class="preview-row hidden" aria-live="polite" aria-atomic="true">
+                <div class="preview">
+                    <img id="previewImage" alt="Uploaded leaf preview" />
+                </div>
+                <article class="analysis" aria-labelledby="disease-title">
+                    <h2 id="disease-title">Disease Analysis</h2>
+                    <div id="diseaseContent" class="analysis-content"></div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Future Plan Section -->
+        <section id="future-plan" class="card hidden" aria-labelledby="future-plan-title" role="tabpanel">
+            <h1 id="future-plan-title" class="section-title">Future Plan</h1>
+            <p class="section-desc">Market prices (next 7 days) and weather forecast (next 30 days).</p>
+
+            <div class="charts">
+                <div class="chart-card">
+                    <h2>Market Prices</h2>
+                    <canvas id="marketChart" width="400" height="220" aria-label="Market price chart" role="img"></canvas>
+                </div>
+                <div class="chart-card">
+                    <h2>Weather Forecast</h2>
+                    <canvas id="weatherChart" width="400" height="220" aria-label="Weather forecast chart" role="img"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Notification Center -->
+        <section id="notifications" class="card hidden" aria-labelledby="notifications-title" role="tabpanel">
+            <h1 id="notifications-title" class="section-title">Notification Center</h1>
+            <ul id="notificationList" class="notices" aria-live="polite" aria-atomic="true">
+                <!-- Filled by script with sample notifications -->
+            </ul>
+        </section>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <p>Agri-Advisory Platform • Designed for farmers • Demo prototype</p>
+    </footer>
+
+    <script src="./script.js" defer></script>
+    <!-- No external chart library: charts drawn with Canvas API in script.js -->
+</body>
+</html>
+
+
