@@ -1,0 +1,149 @@
+/*
+  Agri-Advisory Platform Styles
+  - High contrast, large fonts, mobile-first
+  - Minimal, farmer-friendly
+*/
+
+:root {
+  --bg: #ffffff;
+  --text: #0b0b0b;
+  --muted: #3b3b3b;
+  --primary: #0B3D91; /* deep blue for trust */
+  --primary-contrast: #ffffff;
+  --accent: #0E9F6E; /* green */
+  --warning: #B91C1C; /* red accents */
+  --card: #f6f8fb;
+  --border: #d8dee9;
+  --focus: #ffbf47; /* gov.uk like focus */
+}
+
+* { box-sizing: border-box; }
+html { font-size: 16px; }
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.5;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  background: var(--primary);
+  color: var(--primary-contrast);
+  padding: 0.5rem 1rem;
+  z-index: 10;
+  border-bottom: 4px solid #072966;
+}
+
+.nav { max-width: 980px; margin: 0 auto; }
+.nav-list {
+  list-style: none;
+  display: flex;
+  justify-content: center; /* centered like Apple's top nav */
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0;
+  margin: 0;
+}
+.nav-btn {
+  appearance: none;
+  background: transparent;
+  color: var(--primary-contrast);
+  border: 2px solid transparent;
+  padding: 0.6rem 0.9rem;
+  font-weight: 800;
+  font-size: 1rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+.nav-btn:focus-visible, .nav-btn:hover { outline: none; border-color: var(--focus); background: rgba(255,255,255,0.1); }
+.nav-btn.is-active { background: #ffffff; color: var(--primary); border-color: #ffffff; }
+
+.container { max-width: 980px; margin: 1rem auto; padding: 0 1rem; }
+.section-title { font-size: 1.6rem; margin: 0 0 0.5rem; }
+.section-desc { color: var(--muted); margin: 0 0 1rem; }
+
+.card {
+  background: var(--card);
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.hidden { display: none !important; }
+
+.upload-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 0.5rem;
+  align-items: center;
+}
+.file-label {
+  background: var(--primary);
+  color: var(--primary-contrast);
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  font-weight: 600;
+  display: inline-block;
+}
+input[type="file"] {
+  font-size: 1rem;
+}
+.action-btn {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 0.9rem 1.1rem;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.action-btn:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+
+.help { font-size: 0.95rem; color: var(--muted); margin: 0.25rem 0 1rem; }
+
+.preview-row { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+.preview {
+  min-height: 180px;
+  background: #fff;
+  border: 2px dashed var(--border);
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.preview img { max-width: 100%; height: auto; display: none; }
+
+.analysis h2 { margin: 0.5rem 0; }
+.analysis-content { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 0.75rem; }
+.analysis .advisory { margin-top: 0.75rem; background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 0.75rem; }
+
+.charts { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+.chart-card { background: #fff; border: 2px solid var(--border); border-radius: 12px; padding: 0.75rem; }
+
+.notices { list-style: none; margin: 0; padding: 0; }
+.notices li { background: #fff; border: 2px solid var(--border); border-radius: 12px; padding: 0.75rem; margin-bottom: 0.5rem; }
+.notices h3 { margin: 0 0 0.25rem; font-size: 1.1rem; }
+.notices p { margin: 0; color: var(--muted); }
+
+.footer { text-align: center; color: var(--muted); padding: 2rem 1rem; }
+
+/* Larger screens */
+@media (min-width: 720px) {
+  .section-title { font-size: 1.8rem; }
+  .preview-row { grid-template-columns: 1fr 1.2fr; }
+  .charts { grid-template-columns: 1fr 1fr; }
+}
+
+/* Increase default tap targets */
+button, input[type="file"] { min-height: 44px; }
+
+/* Reduce motion preference */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; scroll-behavior: auto !important; }
+}
+
+
